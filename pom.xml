@@ -4,14 +4,14 @@
 
     <groupId>io.switchbit</groupId>
     <artifactId>spring-cloud-dataflow-maven-plugin</artifactId>
-    <version>1.1.0.BUILD-SNAPSHOT</version>
+    <version>1.1.0.M1</version>
     <packaging>maven-plugin</packaging>
 
 	<scm>
 		<connection>scm:git:git@github.com:donovanmuller/spring-cloud-dataflow-maven-plugin.git</connection>
 		<developerConnection>scm:git:git@github.com:donovanmuller/spring-cloud-dataflow-maven-plugin.git</developerConnection>
 		<url>https://github.com/donovanmuller/spring-cloud-dataflow-maven-plugin</url>
-		<tag>HEAD</tag>
+		<tag>v1.1.0.M1</tag>
 	</scm>
 
     <properties>
