@@ -17,6 +17,9 @@ public abstract class DeployerServerMojo extends AbstractMojo {
 	@Parameter(defaultValue = "${project}", readonly = true, required = true)
 	private MavenProject mavenProject;
 
+	@Parameter(property = "skip", defaultValue = "false")
+	private boolean skip;
+
 	@Parameter(property = "deployerServerUri", defaultValue = "http://localhost:9393", required = true)
 	private String deployerServerUri;
 
@@ -49,7 +52,7 @@ public abstract class DeployerServerMojo extends AbstractMojo {
 		return StringUtils.collectionToDelimitedString(properties, " ");
 	}
 
-	protected void waitForDeployment(final DataFlowTemplate dataFlowTemplate, String name, int maxAttempts, int interval) {
+	protected void waitForDeployment(DataFlowTemplate dataFlowTemplate, String name, int maxAttempts, int interval) {
 		getLog().info("Waiting for application to deploy...");
 		int attempt = 0;
 		DeploymentState status;
@@ -84,59 +87,35 @@ public abstract class DeployerServerMojo extends AbstractMojo {
 		return mavenProject;
 	}
 
-	public String getDeployerServerUri() {
-		return deployerServerUri;
+	public boolean isSkip() {
+		return skip;
 	}
 
-	public void setDeployerServerUri(String deployerServerUri) {
-		this.deployerServerUri = deployerServerUri;
+	public String getDeployerServerUri() {
+		return deployerServerUri;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
-	}
-
 	public boolean isWaitForDeployment() {
 		return waitForDeployment;
-	}
-
-	public void setWaitForDeployment(final boolean waitForDeployment) {
-		this.waitForDeployment = waitForDeployment;
 	}
 
 	public int getInterval() {
 		return interval;
 	}
 
-	public void setInterval(final int interval) {
-		this.interval = interval;
-	}
-
 	public int getMaxAttempts() {
 		return maxAttempts;
-	}
-
-	public void setMaxAttempts(final int maxAttempts) {
-		this.maxAttempts = maxAttempts;
 	}
 
 	public Map<String, String> getApplicationProperties() {
 		return applicationProperties;
 	}
 
-	public void setApplicationProperties(Map<String, String> applicationProperties) {
-		this.applicationProperties = applicationProperties;
-	}
-
 	public Map<String, String> getDeploymentProperties() {
 		return deploymentProperties;
-	}
-
-	public void setDeploymentProperties(Map<String, String> deploymentProperties) {
-		this.deploymentProperties = deploymentProperties;
 	}
 }
